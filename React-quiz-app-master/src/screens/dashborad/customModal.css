@@ -1,0 +1,104 @@
+/* CustomModal.css */
+
+/* 모달 전체 배경 */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+/* 모달 본체 */
+.modal-container {
+  width: 90%;
+  max-width: 700px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: fadeIn 0.3s ease;
+}
+
+/* 모달 헤더 */
+.modal-header {
+  background-color: #f8f9fa;
+  padding: 15px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h5 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #888;
+}
+
+/* 모달 본문 */
+.modal-body {
+  padding: 20px 25px;
+  font-size: 1rem;
+  line-height: 1.6;
+  white-space: pre-line;
+  text-align: left;
+  color: #333;
+  background-color: #fcfcfc;
+}
+
+/* 본문 안 강조줄 */
+.modal-body-highlight {
+  border-left: 4px solid #007bff;
+  padding-left: 15px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* 모달 푸터 */
+.modal-footer {
+  text-align: right;
+  padding: 12px 20px;
+  border-top: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
+}
+
+/* 닫기 버튼 */
+.modal-footer button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.modal-footer button:hover {
+  background-color: #0056b3;
+}
+
+/* 등장 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
