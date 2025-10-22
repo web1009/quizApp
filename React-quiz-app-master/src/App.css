@@ -102,3 +102,33 @@
   font-weight: 700;
   font-size: 1.65em;
 }
+
+/* 반응형 테이블 깨짐 방지 */
+@media (max-width: 600px) {
+
+  .table {
+    width: 100%;
+    display: block;       /* 테이블 전체를 블록으로 */
+    overflow-x: auto;     /* 가로 스크롤 허용 */
+    white-space: nowrap;  /* 칸 줄바꿈 방지 */
+    margin: 0 auto 30px auto;
+  }
+
+  .table th,
+  .table td {
+    font-size: 14px;
+    padding: 12px 8px;
+  }
+
+  /* 상단 배너도 조금 높게 조정 */
+  .top-banner {
+    height: 150px;
+    background-position: top center;
+  }
+
+  /* 버튼이 너무 커지지 않도록 */
+  button {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}
