@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Login from './screens/login/login';
-import Register from './screens/register/register';
 import Dashborad from './screens/dashborad/dashboard';
 import AdminPage from './screens/admin/adminPage';
 import logo from './logo.png';
@@ -11,15 +9,12 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    // 로컬스토리지에서 로그인 상태와 현재 페이지 가져오기
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    const savedPage = localStorage.getItem('currentPage') || 'login';
+    // 로컬스토리지에서 현재 페이지 가져오기
+    const savedPage = localStorage.getItem('currentPage') || 'dashboard';
 
     this.state = {
-      user: isLoggedIn,      // 로그인 상태
-      login: !isLoggedIn && savedPage === 'login',
-      register: !isLoggedIn && savedPage === 'register',
-      admin: false,          // 관리자 페이지 상태
+      user: true,             // 항상 로그인된 상태로 설정
+      admin: false,           // 관리자 페이지 상태
       quizzes: [
         {
           date: '2025-10-16', name: '1', formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfWfVNwuB_nnrdzB9NKp5mTFFuL_1Yoon-N-4r4o_nD3fUG1w/viewform',
@@ -105,15 +100,6 @@ class App extends Component {
   }
 
  // 페이지 전환 함수
- registerPage() {
-  localStorage.setItem('currentPage', 'register');
-  this.setState({ login: false, register: true, user: false, pageStack: ['register'] });
-}
-
-loginPage() {
-  localStorage.setItem('currentPage', 'login');
-  this.setState({ login: true, register: false, user: false, pageStack: ['login'] });
-}
 
 dashboradPage() {
   localStorage.setItem('currentPage', 'dashboard');
@@ -138,15 +124,13 @@ backToDashboard() {
 }
 
 render() {
-  const { user, login, register, admin, quizzes } = this.state;
+  const { user, admin, quizzes } = this.state;
 
   return (
     <div className="App">
       <this.navabar />
       <br />
 
-      {!user && !admin && login && <Login registerPage={this.registerPage} dashboardPage={this.dashboradPage} />}
-      {!user && !admin && register && <Register loginPage={this.loginPage} />}
       {user && !admin && <Dashborad list={quizzes} adminPage={this.adminPage} />}
       {admin && <AdminPage backToDashboard={this.backToDashboard} />}
     </div>
