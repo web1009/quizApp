@@ -79,8 +79,6 @@ class App extends Component {
 
     // 바인딩
     this.navabar = this.navabar.bind(this);
-    this.registerPage = this.registerPage.bind(this);
-    this.loginPage = this.loginPage.bind(this);
     this.dashboradPage = this.dashboradPage.bind(this);
     this.adminPage = this.adminPage.bind(this);
     this.backToDashboard = this.backToDashboard.bind(this);
@@ -103,7 +101,7 @@ class App extends Component {
 
 dashboradPage() {
   localStorage.setItem('currentPage', 'dashboard');
-  this.setState({ login: false, register: false, user: true, admin: false, pageStack: ['dashboard'] });
+  this.setState({ user: true, admin: false, pageStack: ['dashboard'] });
 }
 
 // 관리자 페이지 함수
@@ -111,7 +109,7 @@ adminPage() {
   const password = prompt('관리자 비밀번호를 입력하세요:');
   if (password === 'scj0314') {
     localStorage.setItem('currentPage', 'admin');
-    this.setState({ login: false, register: false, user: false, admin: true, pageStack: ['admin'] });
+    this.setState({ user: false, admin: true, pageStack: ['admin'] });
   } else if (password !== null) {
     alert('비밀번호가 올바르지 않습니다.');
   }
@@ -120,7 +118,7 @@ adminPage() {
 // 대시보드로 돌아가기
 backToDashboard() {
   localStorage.setItem('currentPage', 'dashboard');
-  this.setState({ login: false, register: false, user: true, admin: false, pageStack: ['dashboard'] });
+  this.setState({ user: true, admin: false, pageStack: ['dashboard'] });
 }
 
 render() {
