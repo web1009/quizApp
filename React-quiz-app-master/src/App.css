@@ -1,8 +1,14 @@
-.table-container {
-  width: 90%;
-  margin: 0 auto;
-  padding: 0;
+/* ✅ 전체 공통 스타일 */
+* {
+  font-family: newfont, sans-serif;
+  box-sizing: border-box;
 }
+
+.App {
+  text-align: center;
+}
+
+/* ✅ 상단 배너 */
 .top-banner {
   width: 100%;
   height: 210px;
@@ -14,59 +20,40 @@
   margin-bottom: 0;
 }
 
-@media (max-width: 600px) {
-  .top-banner { height: 100px; }
-  .table-container { width: 100%; }
-}
-
-.content {
-    position: relative;
-    z-index: 1;
-}
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-/* Dashboard 테이블 스타일 */
-.table {
+/* ✅ 테이블 컨테이너 */
+.table-container {
   width: 90%;
-  margin: 150px auto 60px auto;
+  margin: 0 auto;
+  overflow-x: auto;
+  /* 데스크탑/모바일 모두 스크롤 가능 */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ✅ 테이블 */
+.table {
+  width: 100%;
+  min-width: 500px;
+  /* 너무 좁아지지 않게 최소 폭 설정 */
   border-collapse: separate;
   border-spacing: 0 10px;
   background-color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   border-radius: 0 0 12px 12px;
-  margin-top: 0;
+  margin: 40px auto;
+  table-layout: auto;
+  /* 컬럼 내용에 맞게 폭 자동 조정 */
 }
 
-.table th, .table td {
-  padding: 20px 15px;
+.table th,
+.table td {
+  padding: 18px 15px;
   font-size: 16px;
   text-align: center;
   vertical-align: middle;
   border: 1px solid #dee2e6;
   background-color: #ffffff;
+  white-space: nowrap;
+  /* 줄바꿈 방지 */
 }
 
 .table th {
@@ -74,61 +61,132 @@
   font-weight: 600;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* ✅ 버튼 */
+button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
 }
 
-@font-face {
-  font-family: newfont;
-  src: url(font.woff2);
-}
-
-*{
-  font-family: newfont;
+/* ✅ 카드 */
+.card {
+  margin: 5px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2),
+    0 6px 20px rgba(0, 0, 0, 0.19);
 }
 
-.card{
-  margin: 5px;
-  border-radius: 10px;
-}
-
-.card-title {
-  margin-top:0px;
-  font-weight: 700;
-  font-size: 1.65em;
-}
-
-/* 반응형 테이블 깨짐 방지 */
+/* ✅ 모바일 최적화 */
 @media (max-width: 600px) {
+
+  .top-banner {
+    height: 100px;
+    background-position: top center;
+    background-size: cover;
+    margin-bottom: 0;
+    /* 배너 아래 여백 제거 */
+    border-radius: 0;
+    /* 둥근 모서리 제거 */
+    padding-bottom: 16px; 
+    margin-bottom: 10px; /* ✅ 배경 아래에 여백 추가 */
+  }
+
+
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+    /* 모바일에서도 스크롤 가능 */
+    padding: 0;
+  }
 
   .table {
     width: 100%;
-    display: block;       /* 테이블 전체를 블록으로 */
-    overflow-x: auto;     /* 가로 스크롤 허용 */
-    white-space: nowrap;  /* 칸 줄바꿈 방지 */
-    margin: 0 auto 30px auto;
+    min-width: 0;
+    table-layout: fixed;
+    border-spacing: 0;
+    /* 행간 여백 제거 */
+    margin: 0;
+    border-spacing: 0 6px;
   }
 
+  /* 테이블 셀 기본 스타일 */
   .table th,
   .table td {
+    padding: 6px 4px;
+    font-size: 10px;
+    /* 글자 키움 */
+    font-weight: 600;
+    /* 굵게 */
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    /* 가로 중앙 */
+    align-items: center;
+    /* 세로 중앙 */
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  /* 첫 두 컬럼(date, name)을 버튼 앞쪽으로 이동 */
+  .table tr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* 제목행(헤더) 숨기기 */
+  .table thead {
+    display: none !important;
+  }
+
+  .table td:first-child,
+  /* date */
+  .table td:nth-child(2) {
+    /* name */
+    order: -1;
+    /* 앞쪽으로 이동 */
+    flex: 0 0 auto;
+    /* 크기 고정 */
+  }
+
+  .table tr td {
+    display: flex;
+    /* Flexbox 활성화 */
+    justify-content: center;
+    /* 가로 중앙 */
+    align-items: center;
+    /* 세로 중앙 */
     font-size: 14px;
-    padding: 12px 8px;
+    font-weight: 600;
+    padding: 6px 4px;
+    height: 60px;
+    /* 모든 td 높이를 동일하게 지정 */
   }
 
-  /* 상단 배너도 조금 높게 조정 */
-  .top-banner {
-    height: 150px;
-    background-position: top center;
+  /* 버튼 td만 크기 조정 */
+  .table tr td button {
+    height: 40px;
+    /* 버튼 높이 고정 */
+    font-size: 14px;
   }
 
-  /* 버튼이 너무 커지지 않도록 */
+  /* 마지막 컬럼(버튼)을 남은 공간 채움 */
+  .table td:last-child {
+    flex: 1;
+  }
+
   button {
-    padding: 6px 10px;
-    font-size: 14px;
+    width: 100%;
+    margin: 4px 0;
+    font-size: 12px;
+    padding: 6px 4px;
+    margin-bottom: 10px; 
   }
 }

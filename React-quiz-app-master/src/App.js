@@ -17,60 +17,70 @@ class App extends Component {
       admin: false,           // 관리자 페이지 상태
       quizzes: [
         {
-          date: '2025-10-16', name: '1', formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfWfVNwuB_nnrdzB9NKp5mTFFuL_1Yoon-N-4r4o_nD3fUG1w/viewform',
+          date: '2025-10-20', name: '1', formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeam56vTDtPclMUPx-3heHiO0dzJqGPIFuv48KTGaywesBZ7A/viewform',
           answer: 
           // `Página en preparación`
-          `⭐️ 10/16 Tema de la lección y pregunta de reflexión
+`⭐️ Tema de la lección y pregunta de reflexión
 
-          📘 Tema de la lección: Un Corazón Puro 
-          📜 Versículos de referencia: Sal86:11
+📆 Fecha : 25.10.20
+📘 Tema de la lección: Una Mente Puesta en las Cosas de Arriba 
+📜 Versículos de referencia: Col3:2
 
-          ✏️ Pregunta para reflexionar : 
-          1. ¿Como puedo tener un corazón puro?
+✏️ Pregunta para reflexionar : 
+1. ¿Qué es lo que Dios desea que elijamos?
 
-          2. ¿Por qué es importante delante de Dios tener un corazón puro?
+2. ¿Qué son las cosas de Arriba y las cosas de abajo?
 
-          3. ¿Como puedo llegar al cielo, según la clase vista?
+3. ¿Que es una mente pecaminosa y una mente del espíritu?
 
-          4. ¿Como un creyente puede ver a Dios?
+4. ¿Como puedo recibir vida?
 
-          ✅ Respuesta sugerida :
-          1. Al guardar la palabra de Dios 
+5. De acuerdo a Lc10:38-42, ¿Por qué Jesús dijo que María había escogido la única cosa?
 
-          2. Para poder hacer la voluntad de Dios.
+✅ Respuesta sugerida :
+1. Dt30:19-20 la vida y la bendición 
 
-          3. Corazón puro --> voluntad de Dios --> reino de los cielos 
+2. • Arriba: Cielo --> Dios 
+• Abajo: Tierra --> muerte
 
-          4. Mt5:8 Corazón limpió al guardar la palabra.`
+3. • Mente pecaminosa: dedicada solo a las cosas de la carne.
+• Mente en el espíritu: puesta en las cosas de Dios y el cielo.
+
+4. Jn6:63 por medio de la palabra.
+
+5. A) Por lo principal de la vida no era afanarse.
+
+    B) Por qué era el único tiempo con Jesús.
+
+    C) Por qué Jesús representaba la promesa de Dios cumplida. ✅`
         },
-        {
-          date: '2025-10-20', name: '2', formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeam56vTDtPclMUPx-3heHiO0dzJqGPIFuv48KTGaywesBZ7A/viewform',
-          answer: `Página en preparación`
+                {
+          date: '2025-10-23', name: '2', formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdwIxObz_GPzMQAAEii4Ocqmy4Y03b4Teii4tf_W9oF_avD1Q/viewform',
+          answer: 
+          `Página en preparación`
 // `⭐️ Tema de la lección y pregunta de reflexión
 
-// 📆 Fecha : 25.10.20
-// 📘 Tema de la lección: Una Mente Puesta en las Cosas de Arriba 
-// 📜 Versículos de referencia: Col3:2
+// 📆 Fecha : 25.10.23
+// 📘 Tema de la lección: Una Fe Sincera 
+// 📜 Versículos de referencia: 1 Tim 1:5
 
 // ✏️ Pregunta para reflexionar : 
-// 1. ¿Qué es lo que Dios desea que elijamos?
+// 1. ¿Que debe tener una fe reconocida por Dios?
 
-// 2. ¿Qué son las cosas de Arriba y las cosas de abajo?
+// 2. ¿Con qué tipo de corazón acercase a Dios? Escriba versos de referencias.
 
-// 3. ¿Que es una mente pecaminosa y una mente del espíritu?
+// 3. ¿Que es lo Dios pesa en los creyentes?
 
-// 4. ¿Como puedo recibir vida?
+// 4. ¿Por es importante tener una fe sincera?
 
 // ✅ Respuesta sugerida :
-// 1. Dt30:19-20 la vida y la bendición 
+// 1. Acciones de acuerdo al conocimiento correcto de Dios.
 
-// 2. • Arriba: Cielo --> Dios 
-// • Abajo: Tierra --> muerte
+// 2. Corazón limpio y sincero (1 Tim 1:5, He 10:22)
 
-// 3. • Mente pecaminosa: dedicada solo a las cosas de la carne.
-// • Mente en el espíritu: puesta en las cosas de Dios y el cielo.
+// 3. Los espíritus, los corazones si tienen la palabra de Dios. (Pr16:2)
 
-// 4. Jn6:63 por medio de la palabra.`
+// 4. La fe verdadera nos lleva al cielo (Jn6:28-29, Jn14:6)`
         }
 
       ],
