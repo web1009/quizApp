@@ -9,6 +9,15 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    // 캐시 방지 설정
+    if ('caches' in window) {
+      caches.keys().then(function(names) {
+        for (let name of names) {
+          caches.delete(name);
+        }
+      });
+    }
+
     // 로컬스토리지에서 현재 페이지 가져오기
     const savedPage = localStorage.getItem('currentPage') || 'dashboard';
 
@@ -17,7 +26,9 @@ class App extends Component {
       admin: false,           // 관리자 페이지 상태
       quizzes: [
         {
-          date: '2025-10-20', name: '1', formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeam56vTDtPclMUPx-3heHiO0dzJqGPIFuv48KTGaywesBZ7A/viewform',
+          date: '2025-10-20', 
+          name: '1', 
+          formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeam56vTDtPclMUPx-3heHiO0dzJqGPIFuv48KTGaywesBZ7A/viewform',
           answer: 
           // `Página en preparación`
 `⭐️ Tema de la lección y pregunta de reflexión
@@ -52,35 +63,18 @@ class App extends Component {
 
     B) Por qué era el único tiempo con Jesús.
 
-    C) Por qué Jesús representaba la promesa de Dios cumplida. ✅`
+    C) Por qué Jesús representaba la promesa de Dios cumplida. ✅`,
+          quizUploaded: true,
+          answerUploaded: true
         },
-                {
-          date: '2025-10-23', name: '2', formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdwIxObz_GPzMQAAEii4Ocqmy4Y03b4Teii4tf_W9oF_avD1Q/viewform',
+        {
+          date: '2025-10-23', 
+          name: '2', 
+          formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdwIxObz_GPzMQAAEii4Ocqmy4Y03b4Teii4tf_W9oF_avD1Q/viewform',
           answer: 
-          `Página en preparación`
-// `⭐️ Tema de la lección y pregunta de reflexión
-
-// 📆 Fecha : 25.10.23
-// 📘 Tema de la lección: Una Fe Sincera 
-// 📜 Versículos de referencia: 1 Tim 1:5
-
-// ✏️ Pregunta para reflexionar : 
-// 1. ¿Que debe tener una fe reconocida por Dios?
-
-// 2. ¿Con qué tipo de corazón acercase a Dios? Escriba versos de referencias.
-
-// 3. ¿Que es lo Dios pesa en los creyentes?
-
-// 4. ¿Por es importante tener una fe sincera?
-
-// ✅ Respuesta sugerida :
-// 1. Acciones de acuerdo al conocimiento correcto de Dios.
-
-// 2. Corazón limpio y sincero (1 Tim 1:5, He 10:22)
-
-// 3. Los espíritus, los corazones si tienen la palabra de Dios. (Pr16:2)
-
-// 4. La fe verdadera nos lleva al cielo (Jn6:28-29, Jn14:6)`
+          `Página en preparación`,
+          quizUploaded: true,
+          answerUploaded: false
         }
 
       ],
@@ -92,6 +86,8 @@ class App extends Component {
     this.dashboradPage = this.dashboradPage.bind(this);
     this.adminPage = this.adminPage.bind(this);
     this.backToDashboard = this.backToDashboard.bind(this);
+    this.toggleQuizUpload = this.toggleQuizUpload.bind(this);
+    this.toggleAnswerUpload = this.toggleAnswerUpload.bind(this);
   }
 
   // Navbar
@@ -131,6 +127,28 @@ backToDashboard() {
   this.setState({ user: true, admin: false, pageStack: ['dashboard'] });
 }
 
+// 퀴즈 업로드 상태 토글
+toggleQuizUpload(quizIndex) {
+  this.setState(prevState => ({
+    quizzes: prevState.quizzes.map((quiz, index) => 
+      index === quizIndex 
+        ? { ...quiz, quizUploaded: !quiz.quizUploaded }
+        : quiz
+    )
+  }));
+}
+
+// 답변 업로드 상태 토글
+toggleAnswerUpload(quizIndex) {
+  this.setState(prevState => ({
+    quizzes: prevState.quizzes.map((quiz, index) => 
+      index === quizIndex 
+        ? { ...quiz, answerUploaded: !quiz.answerUploaded }
+        : quiz
+    )
+  }));
+}
+
 render() {
   const { user, admin, quizzes } = this.state;
 
@@ -139,7 +157,12 @@ render() {
       <this.navabar />
       <br />
 
-      {user && !admin && <Dashborad list={quizzes} adminPage={this.adminPage} />}
+      {user && !admin && <Dashborad 
+        list={quizzes} 
+        adminPage={this.adminPage}
+        toggleQuizUpload={this.toggleQuizUpload}
+        toggleAnswerUpload={this.toggleAnswerUpload}
+      />}
       {admin && <AdminPage backToDashboard={this.backToDashboard} />}
     </div>
   );

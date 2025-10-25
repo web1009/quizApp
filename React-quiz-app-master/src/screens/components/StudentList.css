@@ -17,6 +17,28 @@
   padding-bottom: 12px;
 }
 
+.quiz-button-wrapper {
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  margin-top: 8px;         /* 버튼과 위 내용 사이 여백 */
+}
+
+.quiz-response-button {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background-color: #4caf50;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.quiz-response-button:hover {
+  background-color: #45a049;
+}
+
+
 /* 표 스타일 */
 table {
   width: 100%;
@@ -58,33 +80,171 @@ tr:hover {
   font-weight: bold;
 }
 
+/* 매치되지 않은 응답 스타일 */
+.unmatched-header {
+  color: #e74c3c;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-align: center;
+  border-bottom: 2px solid #e74c3c;
+  padding-bottom: 8px;
+}
+
+.unmatched-item {
+  border-left: 4px solid #e74c3c !important;
+  background-color: #fdf2f2 !important;
+}
+
+.unmatched-item .status-text {
+  color: #e74c3c !important;
+  font-weight: 600;
+}
+
+/* 정렬 컨트롤 */
+.sort-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.sort-label {
+  font-weight: 600;
+  color: #495057;
+  margin-right: 8px;
+}
+
+.sort-button {
+  padding: 6px 12px;
+  border: 1px solid #dee2e6;
+  background: white;
+  color: #495057;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.sort-button:hover {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+}
+
+.sort-button.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* 학생 목록 */
+.student-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.student-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.student-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.student-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-right: 12px;
+}
+
+.student-id {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.student-name {
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.attendance-time {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.student-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 12px;
+}
+
+.status-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.status-icon.check {
+  background: #28a745;
+  color: white;
+}
+
+.status-icon.cross {
+  background: #dc3545;
+  color: white;
+}
+
+.status-text {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.responded .status-text {
+  color: #28a745;
+}
+
+.not-responded .status-text {
+  color: #dc3545;
+}
+
 /* 반응형 */
 @media (max-width: 768px) {
-  table, thead, tbody, th, td, tr {
-    display: block;
+  .student-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 
-  th {
-    display: none;
+  .student-status {
+    margin-right: 0;
+    align-self: flex-end;
   }
 
-  tr {
-    margin-bottom: 12px;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    padding: 8px;
+  .quiz-button-wrapper {
+    align-self: stretch;
   }
 
-  td {
-    border: none;
-    padding: 6px 8px;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  td::before {
-    content: attr(data-label);
-    font-weight: bold;
-    color: #495057;
+  .sort-controls {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

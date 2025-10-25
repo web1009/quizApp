@@ -84,6 +84,9 @@ export const compareAttendanceAndQuiz = (attendanceStudents, quizResponses) => {
   console.log('출석 학생 수:', attendanceStudents.length);
   console.log('퀴즈 응답 수:', quizResponses.length);
   
+  // 사용된 퀴즈 응답 인덱스 추적
+  const usedResponseIndices = new Set();
+  
   const normalizeBasic = (s) => normalizeNameAdvanced(String(s || ''));
   const stripYCode = (s) => String(s || '').replace(/^y\d+\s+/i, '').trim();
   const normalizeKeepSpaces = (s) => {
@@ -154,37 +157,39 @@ export const compareAttendanceAndQuiz = (attendanceStudents, quizResponses) => {
 
   // 더 유연한 이름 매칭 (부분 일치, 중간 이름 무시)
   const flexibleNameMatch = (name1, name2) => {
-    const norm1 = normalizeKeepSpaces(name1);
-    const norm2 = normalizeKeepSpaces(name2);
-    
-    // 정확 일치
-    if (norm1 === norm2) return true;
-    
-    // 토큰화
-    const tokens1 = norm1.split(' ').filter(t => t.length > 1);
-    const tokens2 = norm2.split(' ').filter(t => t.length > 1);
-    
-    // 첫 토큰(이름)과 마지막 토큰(성)이 일치하면 매칭
-    if (tokens1.length >= 2 && tokens2.length >= 2) {
-      const first1 = tokens1[0];
-      const last1 = tokens1[tokens1.length - 1];
-      const first2 = tokens2[0];
-      const last2 = tokens2[tokens2.length - 1];
-      
-      if (first1 === first2 && last1 === last2) {
-          return true;
-        }
-      }
-      
-    // 부분 포함 관계 (한쪽이 다른 쪽을 포함)
-    if (norm1.includes(norm2) || norm2.includes(norm1)) {
-        return true;
-      }
-      
-    // 공통 토큰이 2개 이상
-    const commonTokens = tokens1.filter(t => tokens2.includes(t));
-    return commonTokens.length >= 2;
-  };
+  const norm1 = normalizeKeepSpaces(name1).replace(/[-'"]/g, '');
+  const norm2 = normalizeKeepSpaces(name2).replace(/[-'"]/g, '');
+  
+  // 1) 전체 정규화 이름 일치
+  if (norm1 === norm2) return true;
+  
+  // 2) 토큰화
+  const tokens1 = norm1.split(' ').filter(t => t.length > 1);
+  const tokens2 = norm2.split(' ').filter(t => t.length > 1);
+
+  // 3) 첫 토큰과 마지막 토큰이 일치하면 매칭
+  if (tokens1.length >= 2 && tokens2.length >= 2) {
+    const first1 = tokens1[0];
+    const last1 = tokens1[tokens1.length - 1];
+    const first2 = tokens2[0];
+    const last2 = tokens2[tokens2.length - 1];
+    if (first1 === first2 && last1 === last2) return true;
+  }
+
+  // 4) 단순화 이름 비교 (처음 2토큰)
+  const simplifiedName1 = tokens1.slice(0, 2).join(' ');
+  const simplifiedName2 = tokens2.slice(0, 2).join(' ');
+  if (simplifiedName1 === simplifiedName2) return true;
+
+  // 5) 공통 토큰 개수 확인
+  const commonTokens = tokens1.filter(t => tokens2.includes(t));
+  if (commonTokens.length >= 1) return true; // 기존 2 → 1로 완화
+
+  // 6) 단편적 포함 관계
+  if (norm1.includes(norm2) || norm2.includes(norm1)) return true;
+
+  return false;
+};
 
   // 동일 응답 중복 사용 방지용 키
   const makeRespKey = (r) => {
@@ -241,6 +246,8 @@ export const compareAttendanceAndQuiz = (attendanceStudents, quizResponses) => {
         if (best && shortNameOk) {
           matched = best;
           usedResponses.add(makeRespKey(best));
+          const bestIndex = quizResponses.findIndex(r => r === best);
+          if (bestIndex !== -1) usedResponseIndices.add(bestIndex);
           console.log(`✅ 동일 Y코드 내 토큰 매칭 성공 (score=${bestScore.toFixed(2)} overlap=${overlapCount})`);
         }
       }
@@ -252,6 +259,8 @@ export const compareAttendanceAndQuiz = (attendanceStudents, quizResponses) => {
       if (byFull && !usedResponses.has(makeRespKey(byFull))) {
         matched = byFull;
         usedResponses.add(makeRespKey(byFull));
+        const fullIndex = quizResponses.findIndex(r => r === byFull);
+        if (fullIndex !== -1) usedResponseIndices.add(fullIndex);
         console.log(`✅ 전체이름 정규화 매칭 성공`);
       }
     }
@@ -263,73 +272,51 @@ export const compareAttendanceAndQuiz = (attendanceStudents, quizResponses) => {
       if (byYCodeName && !usedResponses.has(makeRespKey(byYCodeName))) {
         matched = byYCodeName;
         usedResponses.add(makeRespKey(byYCodeName));
+        const yCodeNameIndex = quizResponses.findIndex(r => r === byYCodeName);
+        if (yCodeNameIndex !== -1) usedResponseIndices.add(yCodeNameIndex);
         console.log(`✅ Y코드+이름 정규화 매칭 성공: "${attendanceYCodeName}" -> "${attendanceYCodeNameNorm}"`);
       }
     }
 
-    // 3) 이름 정규화 정확/부분 매칭 (Y코드 무관하게 전체에서 검색)
-    if (!matched) {
-      // Y코드가 달라도 이름이 일치하면 매칭 (Y01 vs Y18 같은 경우)
-      const candidates = [];
-      for (const list of responsesByY.values()) {
-        candidates.push(...list.filter(r => !usedResponses.has(makeRespKey(r))));
-      }
+    // 3) 이름 정규화 정확/부분 매칭 (Y01인 경우에만)
+if (!matched && studentY === 'y01') {
+  const studentNorm = normalizeNameKeepSpaces(nameNoY); // 공백 유지
+  const candidates = quizResponses.filter(r => !usedResponses.has(makeRespKey(r)));
 
-      const studentNormLocal = studentNorm;
-      let best = null;
-      let bestScore = -1;
-      const attTokens = tokenize(nameNoY);
-      
-      // 1단계: 유연한 이름 매칭 시도
-      for (const r of candidates) {
-        console.log(`🔍 유연한 매칭 시도: "${nameNoY}" vs "${r.studentName}"`);
-        if (flexibleNameMatch(nameNoY, r.studentName)) {
-          console.log(`✅ 유연한 매칭 성공: "${nameNoY}" ↔ "${r.studentName}"`);
-          best = r;
-          bestScore = 1;
-          break;
-        }
-      }
-      
-      // 2단계: 토큰 기반 점수 매칭
-      if (!best) {
-        for (const r of candidates) {
-          const n = normalizeBasic(r.studentName);
-          if (n === studentNormLocal) {
-            best = r;
-            bestScore = 1;
-            break;
-          }
-          const score = scoreOverlap(attTokens, tokenize(r.studentName));
-          if (score > bestScore) {
-            bestScore = score;
-            best = r;
-          }
-        }
-      }
-      
-      // 3단계: 임계치 확인
-      if (best) {
-        const quizTokensBest = tokenize(best.studentName);
-        const overlapCount = attTokens.filter(t => new Set(quizTokensBest).has(t)).length;
-        const minRecall = attTokens.length > 0 ? Math.ceil(attTokens.length * 0.6) : 0;
-        const firstTokenMatch = attTokens.length > 0 && quizTokensBest.length > 0 && attTokens[0] === quizTokensBest[0];
-        const shortNameOk = attTokens.length <= 2
-          ? firstTokenMatch && overlapCount === attTokens.length
-          : firstTokenMatch && overlapCount >= Math.max(2, minRecall);
-        
-        // 유연한 매칭이거나 임계치를 만족하면 매칭 성공
-        if (bestScore === 1 || shortNameOk) {
-          matched = best;
-          usedResponses.add(makeRespKey(best));
-          console.log(`✅ 이름 매칭 성공 (Y코드 무관): "${studentNormLocal}" -> "${best.studentName}" (overlap=${overlapCount})`);
-        }
-      }
+  for (const r of candidates) {
+    const quizNorm = normalizeNameKeepSpaces(r.studentName);
+
+    // 1) 전체 이름 완전 일치
+    if (studentNorm === quizNorm) {
+      matched = r;
+      usedResponses.add(makeRespKey(r));
+      const y01Index = quizResponses.findIndex(resp => resp === r);
+      if (y01Index !== -1) usedResponseIndices.add(y01Index);
+      console.log(`✅ Y01 이름 완전 일치 매칭: "${nameNoY}" -> "${r.studentName}"`);
+      break;
     }
-    
-    if (!matched) {
-      console.log(`❌ 매칭 실패: "${fullName}"`);
+
+    // 2) 토큰 기반 부분 일치
+    const studentTokens = studentNorm.split(' ');
+    const quizTokens = quizNorm.split(' ');
+    const commonTokens = studentTokens.filter(t => quizTokens.includes(t));
+
+    if (commonTokens.length === studentTokens.length) { 
+      // 모든 토큰 일치
+      matched = r;
+      usedResponses.add(makeRespKey(r));
+      const y01TokenIndex = quizResponses.findIndex(resp => resp === r);
+      if (y01TokenIndex !== -1) usedResponseIndices.add(y01TokenIndex);
+      console.log(`✅ Y01 이름 모든 토큰 일치 매칭: "${nameNoY}" -> "${r.studentName}"`);
+      break;
     }
+  }
+
+  if (!matched) {
+    console.log(`❌ Y01 이름 매칭 실패: "${nameNoY}"`);
+  }
+}
+
 
     return {
       student: student,
@@ -339,9 +326,13 @@ export const compareAttendanceAndQuiz = (attendanceStudents, quizResponses) => {
       checked: false
     };
   });
-  
-  return results;
+
+  console.log('사용된 퀴즈 응답 인덱스:', Array.from(usedResponseIndices));
+  console.log('사용된 응답 수:', usedResponseIndices.size);
+
+return { results, usedResponseIndices };
 };
+
 
 export const normalizeStudentName = (name) => {
   return name
@@ -394,9 +385,24 @@ export const calculateResponseRate = (results) => {
   return Math.round((respondedCount / results.length) * 100);
 };
 
-export const getStatistics = (results) => {
+export const getStatistics = (results, totalQuizResponses = null) => {
   const totalStudents = results.length;
   const respondedStudents = results.filter(result => result.quizResponded).length;
+  
+  // totalQuizResponses가 제공된 경우 해당 값 기준으로 계산
+  if (totalQuizResponses !== null) {
+    const notRespondedStudents = totalStudents - totalQuizResponses;
+    const responseRate = totalStudents > 0 ? Math.round((totalQuizResponses / totalStudents) * 100) : 0;
+    
+    return {
+      totalStudents,
+      respondedStudents,
+      notRespondedStudents,
+      responseRate
+    };
+  }
+  
+  // 기존 로직 (totalQuizResponses가 없는 경우)
   const notRespondedStudents = totalStudents - respondedStudents;
   const responseRate = calculateResponseRate(results);
 
@@ -448,4 +454,7 @@ export const sortStudentsByName = (students) => {
     // 기본적으로 알파벳 순으로 정렬
     return nameA.localeCompare(nameB);
   });
+
 };
+
+

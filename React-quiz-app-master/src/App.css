@@ -40,14 +40,108 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   border-radius: 0 0 12px 12px;
   margin: 40px auto;
-  table-layout: auto;
-  /* 컬럼 내용에 맞게 폭 자동 조정 */
+  table-layout: fixed;
+  /* 컬럼 폭 고정 */
+}
+
+/* ✅ 새로운 테이블 구조 스타일 */
+.date-session-cell {
+  width: 40%;
+  vertical-align: middle;
+  text-align: left;
+  padding: 20px 15px;
+}
+
+.date-info {
+  font-size: 22px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.session-info {
+  font-size: 16px;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+.upload-status {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.quiz-uploaded {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.answer-uploaded {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.quiz-not-uploaded {
+  background-color: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.answer-not-uploaded {
+  background-color: #fce4ec;
+  color: #c2185b;
+  border: 1px solid #f8bbd9;
+}
+
+.button-cell {
+  width: 60%;
+  vertical-align: middle;
+  text-align: center;
+  padding: 15px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.quiz-button,
+.response-button {
+  width: 100%;
+  max-width: 220px;
+  padding: 15px 25px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.quiz-button:hover,
+.response-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .table th,
 .table td {
-  padding: 18px 15px;
-  font-size: 16px;
+  padding: 20px 18px;
+  font-size: 18px;
   text-align: center;
   vertical-align: middle;
   border: 1px solid #dee2e6;
@@ -97,7 +191,6 @@ button {
     margin-bottom: 10px; /* ✅ 배경 아래에 여백 추가 */
   }
 
-
   .table-container {
     width: 100%;
     overflow-x: auto;
@@ -109,84 +202,104 @@ button {
     width: 100%;
     min-width: 0;
     table-layout: fixed;
-    border-spacing: 0;
-    /* 행간 여백 제거 */
-    margin: 0;
-    border-spacing: 0 6px;
+    border-spacing: 0 8px;
+    margin: 10px 0;
   }
 
-  /* 테이블 셀 기본 스타일 */
-  .table th,
-  .table td {
-    padding: 6px 4px;
-    font-size: 10px;
-    /* 글자 키움 */
-    font-weight: 600;
-    /* 굵게 */
+  /* 테이블 행을 카드 형태로 변경 */
+  .table tbody tr {
+    display: block;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+  }
+
+  /* 헤더 숨기기 */
+  .table thead {
+    display: none;
+  }
+
+  /* 날짜/회차 셀 */
+  .date-session-cell {
+    display: block;
+    width: 100%;
     text-align: center;
-    vertical-align: middle;
-    display: flex;
-    justify-content: center;
-    /* 가로 중앙 */
-    align-items: center;
-    /* 세로 중앙 */
-    white-space: normal;
-    word-break: break-word;
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+    margin-bottom: 15px;
   }
 
-  /* 첫 두 컬럼(date, name)을 버튼 앞쪽으로 이동 */
-  .table tr {
+  .date-info {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 8px;
+  }
+
+  .session-info {
+    font-size: 16px;
+    color: #7f8c8d;
+    font-style: italic;
+  }
+
+  .upload-status {
+    margin-top: 12px;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-  }
-
-  /* 제목행(헤더) 숨기기 */
-  .table thead {
-    display: none !important;
-  }
-
-  .table td:first-child,
-  /* date */
-  .table td:nth-child(2) {
-    /* name */
-    order: -1;
-    /* 앞쪽으로 이동 */
-    flex: 0 0 auto;
-    /* 크기 고정 */
-  }
-
-  .table tr td {
-    display: flex;
-    /* Flexbox 활성화 */
+    gap: 6px;
     justify-content: center;
-    /* 가로 중앙 */
-    align-items: center;
-    /* 세로 중앙 */
-    font-size: 14px;
-    font-weight: 600;
-    padding: 6px 4px;
-    height: 60px;
-    /* 모든 td 높이를 동일하게 지정 */
   }
 
-  /* 버튼 td만 크기 조정 */
-  .table tr td button {
-    height: 40px;
-    /* 버튼 높이 고정 */
-    font-size: 14px;
+  .status-badge {
+    padding: 8px 14px;
+    font-size: 13px;
+    border-radius: 25px;
   }
 
-  /* 마지막 컬럼(버튼)을 남은 공간 채움 */
-  .table td:last-child {
-    flex: 1;
-  }
-
-  button {
+  /* 버튼 셀 */
+  .button-cell {
+    display: block;
     width: 100%;
-    margin: 4px 0;
-    font-size: 12px;
-    padding: 6px 4px;
-    margin-bottom: 10px; 
+    padding: 0;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .quiz-button,
+  .response-button {
+    width: 100%;
+    max-width: 280px;
+    padding: 16px 25px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .quiz-button:hover,
+  .response-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  /* 기본 테이블 셀 스타일 재정의 */
+  .table th,
+  .table td {
+    padding: 0;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    background-color: transparent;
+    white-space: normal;
+    word-break: break-word;
   }
 }

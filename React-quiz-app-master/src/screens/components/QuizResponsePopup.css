@@ -68,11 +68,10 @@
 
 /* 학생 정보 */
 .student-info {
-  margin-bottom: 24px;
-  padding: 16px;
+  margin-bottom: 16px;
+  padding: 12px;
   background: #f8f9fa;
   border-radius: 8px;
-  border-left: 4px solid #007bff;
 }
 
 .info-item {
@@ -148,6 +147,39 @@
   background: #f8f9fa;
   border-radius: 8px;
   border: 2px dashed #dee2e6;
+}
+
+.translate-button-container {
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  margin-bottom: 10px;       /* 버튼과 테이블 간 간격 */
+  gap: 8px;                  /* 버튼 간 간격 */
+}
+
+.answers-section button {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 1px solid #007bff;
+  background: #007bff;
+  color: white;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.answers-section button:hover {
+  background: #0056b3;
+  border-color: #0056b3;
+}
+
+.show-original-button {
+  background: #6c757d !important;
+  border-color: #6c757d !important;
+}
+
+.show-original-button:hover {
+  background: #545b62 !important;
+  border-color: #545b62 !important;
 }
 
 /* 반응형 디자인 */

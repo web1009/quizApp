@@ -21,7 +21,7 @@ export default class Dashboard extends Component {
   };
 
   render() {
-    const { list, adminPage } = this.props;
+    const { list, adminPage, toggleQuizUpload, toggleAnswerUpload } = this.props;
     const { showModal, modalContent } = this.state;
 
     return (
@@ -43,32 +43,52 @@ export default class Dashboard extends Component {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th>Fecha</th>
-              <th>Sesión</th>
-              <th>Empezar</th>
-              <th>Revisar</th>
+              <th>Fecha & Sesión</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
             {list.map((quiz, index) => (
               <tr key={index}>
-                <td>{quiz.date}</td>
-                <td>{quiz.name}</td>
-                <td>
-                  <button
-                    className="btn btn-success"
-                    onClick={() => window.open(quiz.formUrl, "_blank")}
-                  >
-                    Empezar
-                  </button>
+                <td className="date-session-cell">
+                  <div className="date-info">
+                    <strong>{quiz.date}</strong>
+                  </div>
+                  <div className="session-info">
+                    Sesión {quiz.name}
+                  </div>
+                  <div className="upload-status">
+                    <span 
+                      className={`status-badge ${quiz.quizUploaded ? 'quiz-uploaded' : 'quiz-not-uploaded'}`}
+                      onClick={() => toggleQuizUpload(index)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {quiz.quizUploaded ? '📝 Quiz Subido' : '📝 Quiz Pendiente'}
+                    </span>
+                    <span 
+                      className={`status-badge ${quiz.answerUploaded ? 'answer-uploaded' : 'answer-not-uploaded'}`}
+                      onClick={() => toggleAnswerUpload(index)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      {quiz.answerUploaded ? '✅ Respuesta Subida' : '⏳ Respuesta Pendiente'}
+                    </span>
+                  </div>
                 </td>
-                <td>
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => this.openModal(quiz.answer)}
-                  >
-                    Revisar
-                  </button>
+                <td className="button-cell">
+                  <div className="button-container">
+                    <button
+                      className="btn btn-success quiz-button"
+                      onClick={() => window.open(quiz.formUrl, "_blank")}
+                    >
+                      Empezar
+                    </button>
+                    <button
+                      className="btn btn-primary response-button"
+                      onClick={() => this.openModal(quiz.answer)}
+                    >
+                      Revisar
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}

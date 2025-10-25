@@ -11,17 +11,16 @@
     "sweetalert": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "vercel-build": "react-scripts build"
+  "start": "react-scripts start",
+  "build": "GENERATE_SOURCEMAP=false react-scripts build",
+  "test": "react-scripts test --env=jsdom",
+  "eject": "react-scripts eject"
   },
   "devDependencies": {
     "gh-pages": "^6.3.0"
   },
   "engines": {
-    "node": "18.x"
+    "node": "22.x"
   },
   "browserslist": {
     "production": [

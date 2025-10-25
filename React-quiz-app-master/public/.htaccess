@@ -1,0 +1,20 @@
+# Disable caching for all files
+<IfModule mod_headers.c>
+    Header always set Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+    Header always set Pragma "no-cache"
+    Header always set Expires "0"
+    Header unset ETag
+    Header unset Last-Modified
+</IfModule>
+
+# Disable caching for specific file types
+<FilesMatch "\.(html|htm|js|css|png|jpg|jpeg|gif|ico|svg)$">
+    <IfModule mod_headers.c>
+        Header set Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </IfModule>
+</FilesMatch>
+
+# Disable ETags
+FileETag None
