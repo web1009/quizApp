@@ -8,8 +8,22 @@
   Pragma: no-cache
   Expires: 0
 
-/favicon.ico
+/static/js/*
   Cache-Control: no-store, no-cache, max-age=0, must-revalidate, proxy-revalidate, private, no-transform, s-maxage=0
   Pragma: no-cache
   Expires: 0
 
+/static/css/*
+  Cache-Control: no-store, no-cache, max-age=0, must-revalidate, proxy-revalidate, private, no-transform, s-maxage=0
+  Pragma: no-cache
+  Expires: 0
+
+/static/media/*
+  Cache-Control: no-store, no-cache, max-age=0, must-revalidate, proxy-revalidate, private, no-transform, s-maxage=0
+  Pragma: no-cache
+  Expires: 0
+
+/favicon.ico
+  Cache-Control: no-store, no-cache, max-age=0, must-revalidate, proxy-revalidate, private, no-transform, s-maxage=0
+  Pragma: no-cache
+  Expires: 0
