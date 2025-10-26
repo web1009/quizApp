@@ -1,5 +1,5 @@
 {
-  "homepage": "https://web1009.github.io/vercel",
+  "homepage": "https://web1009.github.io/quizApp",
   "name": "quiz",
   "version": "0.1.0",
   "private": true,
@@ -12,10 +12,10 @@
     "sweetalert": "^2.1.0"
   },
   "scripts": {
- "start": "react-scripts start",
+  "start": "react-scripts start",
   "build": "GENERATE_SOURCEMAP=false react-scripts build",
   "predeploy": "npm run build",
-  "deploy": "gh-pages -d build",
+  "deploy": "gh-pages -d build -b gh-pages",
   "test": "react-scripts test --env=jsdom",
   "eject": "react-scripts eject"
   },
