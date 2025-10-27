@@ -72,7 +72,30 @@ class App extends Component {
           name: '2', 
           formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdwIxObz_GPzMQAAEii4Ocqmy4Y03b4Teii4tf_W9oF_avD1Q/viewform',
           answer: 
-          `Página en preparación`,
+          // `Página en preparación`
+          `⭐️ Tema de la lección y pregunta de reflexión
+
+📆 Fecha : 25.10.23
+📘 Tema de la lección: Una Fe Sincera 
+📜 Versículos de referencia: 1 Tim 1:5
+
+✏️ Pregunta para reflexionar : 
+1. ¿Que debe tener una fe reconocida por Dios?
+
+2. ¿Con qué tipo de corazón acercase a Dios? Escriba versos de referencias.
+
+3. ¿Que es lo Dios pesa en los creyentes?
+
+4. ¿Por es importante tener una fe sincera?
+
+✅ Respuesta sugerida :
+1. Acciones de acuerdo al conocimiento correcto de Dios.
+
+2. Corazón limpio y sincero (1 Tim 1:5, He 10:22)
+
+3. Los espíritus, los corazones si tienen la palabra de Dios. (Pr16:2)
+
+4. La fe verdadera nos lleva al cielo (Jn6:28-29, Jn14:6)`,
           quizUploaded: true,
           answerUploaded: false
         }
