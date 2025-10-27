@@ -26,54 +26,12 @@ class App extends Component {
       admin: false,           // 관리자 페이지 상태
       quizzes: [
         {
-          date: '2025-10-20', 
-          name: '1', 
-          formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeam56vTDtPclMUPx-3heHiO0dzJqGPIFuv48KTGaywesBZ7A/viewform',
-          answer: 
-          // `Página en preparación`
-`⭐️ Tema de la lección y pregunta de reflexión
-
-📆 Fecha : 25.10.20
-📘 Tema de la lección: Una Mente Puesta en las Cosas de Arriba 
-📜 Versículos de referencia: Col3:2
-
-✏️ Pregunta para reflexionar : 
-1. ¿Qué es lo que Dios desea que elijamos?
-
-2. ¿Qué son las cosas de Arriba y las cosas de abajo?
-
-3. ¿Que es una mente pecaminosa y una mente del espíritu?
-
-4. ¿Como puedo recibir vida?
-
-5. De acuerdo a Lc10:38-42, ¿Por qué Jesús dijo que María había escogido la única cosa?
-
-✅ Respuesta sugerida :
-1. Dt30:19-20 la vida y la bendición 
-
-2. • Arriba: Cielo --> Dios 
-• Abajo: Tierra --> muerte
-
-3. • Mente pecaminosa: dedicada solo a las cosas de la carne.
-• Mente en el espíritu: puesta en las cosas de Dios y el cielo.
-
-4. Jn6:63 por medio de la palabra.
-
-5. A) Por lo principal de la vida no era afanarse.
-
-    B) Por qué era el único tiempo con Jesús.
-
-    C) Por qué Jesús representaba la promesa de Dios cumplida. ✅`,
-          quizUploaded: true,
-          answerUploaded: true
-        },
-        {
           date: '2025-10-23', 
-          name: '2', 
+          name: '1', 
           formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdwIxObz_GPzMQAAEii4Ocqmy4Y03b4Teii4tf_W9oF_avD1Q/viewform',
           answer: 
           // `Página en preparación`
-          `⭐️ Tema de la lección y pregunta de reflexión
+`⭐️ Tema de la lección y pregunta de reflexión
 
 📆 Fecha : 25.10.23
 📘 Tema de la lección: Una Fe Sincera 
@@ -96,6 +54,15 @@ class App extends Component {
 3. Los espíritus, los corazones si tienen la palabra de Dios. (Pr16:2)
 
 4. La fe verdadera nos lleva al cielo (Jn6:28-29, Jn14:6)`,
+          quizUploaded: true,
+          answerUploaded: true
+        },
+        {
+          date: '2025-10-27', 
+          name: '2', 
+          formUrl: 'https://forms.gle/ys6FgYu7fSdgBNxy9',
+          answer: 
+          `Página en preparación`,
           quizUploaded: true,
           answerUploaded: false
         }
