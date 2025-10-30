@@ -26,41 +26,43 @@ class App extends Component {
       admin: false,           // 관리자 페이지 상태
       quizzes: [
         {
-          date: '2025-10-23', 
+          date: '2025-10-27', 
           name: '1', 
-          formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSdwIxObz_GPzMQAAEii4Ocqmy4Y03b4Teii4tf_W9oF_avD1Q/viewform',
+          formUrl: '',
           answer: 
           // `Página en preparación`
 `⭐️ Tema de la lección y pregunta de reflexión
 
-📆 Fecha : 25.10.23
-📘 Tema de la lección: Una Fe Sincera 
-📜 Versículos de referencia: 1 Tim 1:5
+📆 Fecha : 25.10.27
+📘 Tema de la lección: La historia de Dios (parte 1)
+📜 Versículos de referencia: Is 46:1
 
 ✏️ Pregunta para reflexionar : 
-1. ¿Que debe tener una fe reconocida por Dios?
+1.  ¿Desde cuándo Dios ha prometido su obra? 
 
-2. ¿Con qué tipo de corazón acercase a Dios? Escriba versos de referencias.
+2. ¿Cual es el trabajo que Dios ha estado haciendo?
 
-3. ¿Que es lo Dios pesa en los creyentes?
+3. ¿Cual fue el primer mandamiento que Dios dio?
 
-4. ¿Por es importante tener una fe sincera?
+4. ¿Que versos testifican que la palabra es vida?
 
 ✅ Respuesta sugerida :
-1. Acciones de acuerdo al conocimiento correcto de Dios.
+1. Desde el principio (Gn46:10)
 
-2. Corazón limpio y sincero (1 Tim 1:5, He 10:22)
+2. Erradicar el problema del pecado.
 
-3. Los espíritus, los corazones si tienen la palabra de Dios. (Pr16:2)
+3. A) La ley 
+     B) los 10 mandamientos 
+     C) No comer del árbol del bien y mal.✅
 
-4. La fe verdadera nos lleva al cielo (Jn6:28-29, Jn14:6)`,
+4. Pr4:4, Pr7:2`,
           quizUploaded: true,
           answerUploaded: true
         },
         {
-          date: '2025-10-27', 
+          date: '2025-10-30', 
           name: '2', 
-          formUrl: 'https://forms.gle/ys6FgYu7fSdgBNxy9',
+          formUrl: 'https://forms.gle/ZUVBqLuoHGUSchY2A',
           answer: 
           `Página en preparación`,
           quizUploaded: true,
