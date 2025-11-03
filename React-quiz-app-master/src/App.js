@@ -26,43 +26,44 @@ class App extends Component {
       admin: false,           // 관리자 페이지 상태
       quizzes: [
         {
-          date: '2025-10-27', 
+          date: '2025-10-30', 
           name: '1', 
-          formUrl: '',
+          formUrl: 'https://forms.gle/ZUVBqLuoHGUSchY2A',
           answer: 
           // `Página en preparación`
 `⭐️ Tema de la lección y pregunta de reflexión
 
-📆 Fecha : 25.10.27
-📘 Tema de la lección: La historia de Dios (parte 1)
-📜 Versículos de referencia: Is 46:1
+📆 Fecha : 25.10.30
+📘 Tema de la lección: La Historia de Dios (Parte 2)
+📜 Versículos de referencia: Is 46:10
 
 ✏️ Pregunta para reflexionar : 
-1.  ¿Desde cuándo Dios ha prometido su obra? 
+1. ¿Cual ha sido el problema desde el principio, quien ha estado trabajando para solucionar?
 
-2. ¿Cual es el trabajo que Dios ha estado haciendo?
+2. Cual es la voluntad de Dios que refleja en su obra.
 
-3. ¿Cual fue el primer mandamiento que Dios dio?
+3. ¿Cual es la promesa de Dios?
 
-4. ¿Que versos testifican que la palabra es vida?
+4. Aprendiendo acerca de la historia de Dios, ¿Que lo que como hijo debo hacer?
 
 ✅ Respuesta sugerida :
-1. Desde el principio (Gn46:10)
+1. • El pecado causado por el hombre.
+• Dios ha estado trabajando (Jn5:17)
 
-2. Erradicar el problema del pecado.
+2. Reconciliar (reconocerse a través de Jesús, 1 Co15:27-28)
 
-3. A) La ley 
-     B) los 10 mandamientos 
-     C) No comer del árbol del bien y mal.✅
+3. A) Amar al prójimo 
+    B) Que vayamos al cielo.
+    C) Morar en la creación (Ap21:3-5) ✅
 
-4. Pr4:4, Pr7:2`,
+4. Entender la obra de Dios a través de la palabra y unirme a su trabajo.`,
           quizUploaded: true,
           answerUploaded: true
         },
         {
-          date: '2025-10-30', 
+          date: '2025-11-03', 
           name: '2', 
-          formUrl: 'https://forms.gle/ZUVBqLuoHGUSchY2A',
+          formUrl: 'https://forms.gle/x1NqrvGm8rdqU6LQ8',
           answer: 
           `Página en preparación`,
           quizUploaded: true,
