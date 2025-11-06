@@ -26,44 +26,44 @@ class App extends Component {
       admin: false,           // 관리자 페이지 상태
       quizzes: [
         {
-          date: '2025-10-30', 
+          date: '2025-11-03', 
           name: '1', 
-          formUrl: 'https://forms.gle/ZUVBqLuoHGUSchY2A',
+          formUrl: 'https://forms.gle/x1NqrvGm8rdqU6LQ8',
           answer: 
           // `Página en preparación`
 `⭐️ Tema de la lección y pregunta de reflexión
 
-📆 Fecha : 25.10.30
-📘 Tema de la lección: La Historia de Dios (Parte 2)
-📜 Versículos de referencia: Is 46:10
+📆 Fecha : 25.11.04
+📘 Tema de la lección: Un Creyente Según el Corazón de Dios 
+📜 Versículos de referencia: Jr24:7
 
 ✏️ Pregunta para reflexionar : 
-1. ¿Cual ha sido el problema desde el principio, quien ha estado trabajando para solucionar?
+1. ¿Que creyentes busca Dios, y porque los busca?
 
-2. Cual es la voluntad de Dios que refleja en su obra.
+2. ¿Por qué el pueblo no pudo reconocer el deseo de salvación para ellos?
 
-3. ¿Cual es la promesa de Dios?
+3. ¿Que son cosas que debo tener en mi camino de fe como estándar?
 
-4. Aprendiendo acerca de la historia de Dios, ¿Que lo que como hijo debo hacer?
+4. ¿Que es adorar en espíritu y en verdad?
 
 ✅ Respuesta sugerida :
-1. • El pecado causado por el hombre.
-• Dios ha estado trabajando (Jn5:17)
+1. Creyentes verdaderos que lo adoran en espíritu y verdad 
 
-2. Reconciliar (reconocerse a través de Jesús, 1 Co15:27-28)
+2. Porque no tenían conocimiento de Dios (Ro102-3, Mr7:8)
 
-3. A) Amar al prójimo 
-    B) Que vayamos al cielo.
-    C) Morar en la creación (Ap21:3-5) ✅
+3. A) mucha oración 
+    B) mucha lectura de la palabra de Dios.
+  C) Conocimiento, fe y acciones ✅
+   D) Estándar siempre la palabra.
 
-4. Entender la obra de Dios a través de la palabra y unirme a su trabajo.`,
+4. Es guardando la palabra, porque la palabra contiene la voluntad de Dios (Jn6:63)`,
           quizUploaded: true,
           answerUploaded: true
         },
         {
-          date: '2025-11-03', 
+          date: '2025-11-06', 
           name: '2', 
-          formUrl: 'https://forms.gle/x1NqrvGm8rdqU6LQ8',
+          formUrl: 'https://forms.gle/Yy1msr9XVqDjW5JG6',
           answer: 
           `Página en preparación`,
           quizUploaded: true,
