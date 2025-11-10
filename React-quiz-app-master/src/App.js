@@ -26,44 +26,39 @@ class App extends Component {
       admin: false,           // 관리자 페이지 상태
       quizzes: [
         {
-          date: '2025-11-03', 
+          date: '2025-11-06', 
           name: '1', 
-          formUrl: 'https://forms.gle/x1NqrvGm8rdqU6LQ8',
+          formUrl: 'https://forms.gle/Yy1msr9XVqDjW5JG6',
           answer: 
           // `Página en preparación`
 `⭐️ Tema de la lección y pregunta de reflexión
 
-📆 Fecha : 25.11.04
-📘 Tema de la lección: Un Creyente Según el Corazón de Dios 
+📆 Fecha : 25.11.06
+📘 Tema de la lección: Un Creyente Según el Corazón de Dios (parte 2)
 📜 Versículos de referencia: Jr24:7
 
 ✏️ Pregunta para reflexionar : 
-1. ¿Que creyentes busca Dios, y porque los busca?
+1. ¿Como podemos conocer los secretos de Dios?
 
-2. ¿Por qué el pueblo no pudo reconocer el deseo de salvación para ellos?
+2. ¿Hay un tiempo para encontrarse con Dios?
 
-3. ¿Que son cosas que debo tener en mi camino de fe como estándar?
+3. ¿Por qué es importante conocer y entender la voluntad de Dios?
 
-4. ¿Que es adorar en espíritu y en verdad?
+4. Escriba cuál es su determinación sabiendo que Dios ve y pesa los corazones.
 
 ✅ Respuesta sugerida :
-1. Creyentes verdaderos que lo adoran en espíritu y verdad 
+1. Cuando Dios da a conocer su voluntad/palabra (1Co2:10-11)
 
-2. Porque no tenían conocimiento de Dios (Ro102-3, Mr7:8)
+2. Cuando sus promesas se cumplen.
 
-3. A) mucha oración 
-    B) mucha lectura de la palabra de Dios.
-  C) Conocimiento, fe y acciones ✅
-   D) Estándar siempre la palabra.
-
-4. Es guardando la palabra, porque la palabra contiene la voluntad de Dios (Jn6:63)`,
+3. Porque como propio pueblo podemos no reconocer a Dios si no guardamos su palabra.`,
           quizUploaded: true,
           answerUploaded: true
         },
         {
-          date: '2025-11-06', 
+          date: '2025-11-10', 
           name: '2', 
-          formUrl: 'https://forms.gle/Yy1msr9XVqDjW5JG6',
+          formUrl: 'https://forms.gle/YL8Jy4DEXvGiWAH37',
           answer: 
           `Página en preparación`,
           quizUploaded: true,
