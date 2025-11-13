@@ -26,39 +26,43 @@ class App extends Component {
       admin: false,           // 관리자 페이지 상태
       quizzes: [
         {
-          date: '2025-11-06', 
+          date: '2025-11-10', 
           name: '1', 
-          formUrl: 'https://forms.gle/Yy1msr9XVqDjW5JG6',
+          formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeuCjdXMKq9v3O5dV6xHdVN_ksFPYM4HzkhtJAr3YxAQR6iVA/viewform',
           answer: 
           // `Página en preparación`
 `⭐️ Tema de la lección y pregunta de reflexión
 
-📆 Fecha : 25.11.06
-📘 Tema de la lección: Un Creyente Según el Corazón de Dios (parte 2)
-📜 Versículos de referencia: Jr24:7
+📆 Fecha : 25.11.10
+📘 Tema de la lección : Como se conecta la biblia a través de una promesa
+📜 Versículos de referencia : Sal 25:10
 
 ✏️ Pregunta para reflexionar : 
-1. ¿Como podemos conocer los secretos de Dios?
 
-2. ¿Hay un tiempo para encontrarse con Dios?
+1. ¿Cuáles son los 4 componentes de la promesa de Dios?
 
-3. ¿Por qué es importante conocer y entender la voluntad de Dios?
+2. ¿Qué fue lo que el Antiguo Testamento prometía principalmente al pueblo de Israel? (Mencione un versículo).
 
-4. Escriba cuál es su determinación sabiendo que Dios ve y pesa los corazones.
+3. ¿Qué debo hacer para guardar el Nuevo pacto?
 
 ✅ Respuesta sugerida :
-1. Cuando Dios da a conocer su voluntad/palabra (1Co2:10-11)
 
-2. Cuando sus promesas se cumplen.
+1. 
+1)Promesa entre Dios y el pueblo. 
+2) Confirmado con sangre.
+3) Si se guarda el pacto, Dios da bendiciones. 
+4) Tiene que saber el pacto para guardarlo.
 
-3. Porque como propio pueblo podemos no reconocer a Dios si no guardamos su palabra.`,
+2. La llegada del redentor (la primera venida de Jesús), Isa 59:20, Jn 1:45.
+
+3. Debo conocer las profecías del Nuevo Testamento.`,
           quizUploaded: true,
           answerUploaded: true
         },
         {
-          date: '2025-11-10', 
+          date: '2025-11-13', 
           name: '2', 
-          formUrl: 'https://forms.gle/YL8Jy4DEXvGiWAH37',
+          formUrl: 'https://forms.gle/8k5FVmVvJL1cJL1QA',
           answer: 
           `Página en preparación`,
           quizUploaded: true,
