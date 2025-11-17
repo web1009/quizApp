@@ -26,43 +26,39 @@ class App extends Component {
       admin: false,           // 관리자 페이지 상태
       quizzes: [
         {
-          date: '2025-11-10', 
+          date: '2025-11-13', 
           name: '1', 
-          formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeuCjdXMKq9v3O5dV6xHdVN_ksFPYM4HzkhtJAr3YxAQR6iVA/viewform',
+          formUrl: 'https://forms.gle/8k5FVmVvJL1cJL1QA',
           answer: 
           // `Página en preparación`
 `⭐️ Tema de la lección y pregunta de reflexión
 
-📆 Fecha : 25.11.10
-📘 Tema de la lección : Como se conecta la biblia a través de una promesa
-📜 Versículos de referencia : Sal 25:10
+📆 Fecha : 25.11.13
+📘 Tema de la lección : Cómo tener una verdadera relación con Dios
+📜 Versículos de referencia : Jn 3:6-7
 
 ✏️ Pregunta para reflexionar : 
 
-1. ¿Cuáles son los 4 componentes de la promesa de Dios?
+1. ¿Cuál es el estándar para tener una relación verdadera con Dios?
 
-2. ¿Qué fue lo que el Antiguo Testamento prometía principalmente al pueblo de Israel? (Mencione un versículo).
+2. (1) Mencione el versículo donde menciona que para tener vida eterna hay que conocer al Dios verdadero y a quien ha enviado. (2) ¿Por qué es importante saber esto?
 
-3. ¿Qué debo hacer para guardar el Nuevo pacto?
+3. ¿Cómo me puedo asegurar de ser un hijo de Dios? Mencione un versículo 
 
 ✅ Respuesta sugerida :
 
-1. 
-1)Promesa entre Dios y el pueblo. 
-2) Confirmado con sangre.
-3) Si se guarda el pacto, Dios da bendiciones. 
-4) Tiene que saber el pacto para guardarlo.
+1. La palabra (biblia, palabra de verdad)
 
-2. La llegada del redentor (la primera venida de Jesús), Isa 59:20, Jn 1:45.
+2. (1) Juan 17:3. (2) Porque debo discernir entre el Dios verdadero y el dios falso.
 
-3. Debo conocer las profecías del Nuevo Testamento.`,
+3. Renaciendo con la palabra de Dios (Renaciendo con la semilla incorruptible o palabra de verdad), 1 Pedro 1:23`,
           quizUploaded: true,
           answerUploaded: true
         },
         {
-          date: '2025-11-13', 
+          date: '2025-11-17', 
           name: '2', 
-          formUrl: 'https://forms.gle/8k5FVmVvJL1cJL1QA',
+          formUrl: 'https://forms.gle/pPc5m3x8zkssgKXs8',
           answer: 
           `Página en preparación`,
           quizUploaded: true,
